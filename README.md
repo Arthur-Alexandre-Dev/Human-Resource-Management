@@ -8,7 +8,7 @@ Fornecer um conjunto de scripts SQL organizados que:
   - Inserem dados de exemplo.
   - Realizam consultas para obter insights e análises sobre os funcionários, salários e desempenho.
 
-#Estrutura do Projeto
+# Estrutura do Projeto
 A estrutura de arquivos está organizada da seguinte forma:
 
 ```plaintext
@@ -40,7 +40,7 @@ hr-management-db/
 ├── README.md                    # Documentação do projeto
 └── workflow_settings.yaml       # Configurações do Workflow
 ```
-#Exemplo de Query
+# Exemplo de Query
 ![Query_Example](https://github.com/user-attachments/assets/1ec37ac6-c87c-4853-9851-69a2f9aac50a)
-##Output
+## Output
 ![Output](https://github.com/user-attachments/assets/da56cd52-e086-4f7b-a13c-7ae54107c405)
