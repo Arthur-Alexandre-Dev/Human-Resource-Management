@@ -1,0 +1,8 @@
+--Quantidade de Funcionários por Departamento
+SELECT 
+  d.name AS department,
+  COUNT (e.employee_id) AS employees_quantity
+FROM `hr-management-db.hr_management.departments` d
+JOIN `hr-management-db.hr_management.employees` e
+ON d.department_id = e.department_id
+GROUP BY d.name;

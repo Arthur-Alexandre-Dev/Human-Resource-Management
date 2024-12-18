@@ -1,0 +1,18 @@
+--Funcionários por Faixa Etária
+SELECT
+  first_name,
+  last_name,
+  CASE
+    WHEN DATE_DIFF(CURRENT_DATE, birth_date, YEAR) < 30 THEN 'Under 30 years old'
+    WHEN DATE_DIFF(CURRENT_DATE, birth_date, YEAR) BETWEEN 30 AND 50 THEN 'Between 30 to 50 years old'
+    ELSE 'Over 50 years old'
+  END AS age_range
+FROM `hr-management-db.hr_management.employees`;
+
+--Número de Funcionários por Faixa Etária
+SELECT
+  COUNT(employee_id) AS total_employees,
+  SUM(CASE WHEN DATE_DIFF(CURRENT_DATE, birth_date, YEAR) < 30 THEN 1 ELSE 0 END) AS under_than_30,
+  SUM(CASE WHEN DATE_DIFF(CURRENT_DATE, birth_date, YEAR) BETWEEN 30 AND 50 THEN 1 ELSE 0 END) AS between_30_and_50,
+  SUM(CASE WHEN DATE_DIFF(CURRENT_DATE, birth_date, YEAR) > 50 THEN 1 ELSE 0 END) AS over_50
+FROM `hr-management-db.hr_management.employees`;

@@ -1,0 +1,10 @@
+--Funcionários que receberam Pontuação maior ou igual a 90
+SELECT 
+  pr.score, 
+  e.first_name, 
+  e.last_name
+FROM `hr-management-db.hr_management.performance_reviews` pr
+JOIN `hr-management-db.hr_management.employees` e
+ON pr.employee_id = e.employee_id
+WHERE pr.score >= 90
+ORDER BY pr.score DESC;

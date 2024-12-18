@@ -1,0 +1,7 @@
+--Salário Médio dos Funcionários, Soma dos Salários e Salários Mínimos e Máximos
+SELECT 
+  AVG (salary) AS average_salary,
+  SUM (salary) AS salary_sum,
+  MIN (salary) AS lowest_salary,
+  MAX (salary) AS highest_salary
+FROM `hr-management-db.hr_management.salaries`;

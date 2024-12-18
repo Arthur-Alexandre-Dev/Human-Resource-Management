@@ -1,0 +1,47 @@
+CREATE TABLE `hr-management-db.hr_management.departments` (
+  department_id INT64,
+  name STRING,
+  location STRING
+);
+
+CREATE TABLE `hr-management-db.hr_management.job_titles` (
+  job_id INT64,
+  title STRING,
+  min_salary NUMERIC,
+  max_salary NUMERIC
+);
+
+CREATE TABLE `hr-management-db.hr_management.employees` (
+  employee_id INT64,
+  first_name STRING,
+  last_name STRING,
+  department_id INT64,
+  job_id INT64,
+  hire_date DATE,
+  gender STRING,
+  birth_date DATE
+);
+
+CREATE TABLE `hr-management-db.hr_management.salaries` (
+  salary_id INT64,
+  employee_id INT64,
+  salary NUMERIC,
+  start_date DATE,
+  end_date DATE
+);
+
+CREATE TABLE `hr-management-db.hr_management.performance_reviews` (
+  review_id INT64,
+  employee_id INT64,
+  review_date DATE,
+  score INT64,
+  comments STRING
+);
+
+CREATE TABLE `hr-management-db.hr_management.benefits` (
+  benefit_id INT64,
+  employee_id INT64,
+  benefit_type STRING,
+  start_date DATE,
+  end_date DATE
+);

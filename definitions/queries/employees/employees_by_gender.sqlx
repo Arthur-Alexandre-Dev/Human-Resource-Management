@@ -1,0 +1,6 @@
+--Quantidade de Funcionários por Gênero
+SELECT 
+  gender, 
+  COUNT (employee_id) AS employees
+FROM `hr-management-db.hr_management.employees`
+GROUP BY gender;

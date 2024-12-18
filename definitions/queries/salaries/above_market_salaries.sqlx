@@ -1,0 +1,18 @@
+--Funcionários com Salários Acima da Média do Mercado. Como colocar o nome do cargo também?
+SELECT 
+  e.first_name, 
+  e.last_name, 
+  s.salary,
+  e.job_id,
+  jt.title
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id
+JOIN `hr-management-db.hr_management.job_titles` jt
+ON e.job_id = jt.job_id
+WHERE s.salary > (
+  SELECT
+    (jt.min_salary + jt.max_salary) / 2 AS average_salary
+  FROM `hr-management-db.hr_management.job_titles` jt
+  WHERE jt.job_id = e.job_id
+);

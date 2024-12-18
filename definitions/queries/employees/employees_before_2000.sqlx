@@ -1,0 +1,7 @@
+--Funcionários nascidos antes de 2000
+SELECT 
+  first_name, 
+  last_name, 
+  birth_date
+FROM `hr-management-db.hr_management.employees`
+WHERE birth_date <= '2000-01-01';

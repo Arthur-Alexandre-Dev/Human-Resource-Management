@@ -1,0 +1,110 @@
+INSERT INTO `hr-management-db.hr_management.departments`
+(department_id, name, location)
+VALUES
+  (1, 'IT', 'California'),
+  (2, 'Sales', 'New York'),
+  (3, 'Marketing', 'Chicago'),
+  (4, 'HR', 'San Francisco'),
+  (5, 'Finance', 'Washington');
+
+INSERT INTO `hr-management-db.hr_management.job_titles`
+(job_id, title, min_salary, max_salary)
+VALUES
+  (1, 'Data Engineer', 82721.00, 190965.00),
+  (2, 'Sales Manager', 42925.00, 177801.00),
+  (3, 'Marketing Specialist', 40467.00, 99548.00),
+  (4, 'HR Specialist', 44499.00, 121547.00),
+  (5, 'Financial Analyst', 53308.00, 114275.00),
+  (6, 'Software Engineer', 66060.00, 165953.00);
+
+INSERT INTO `hr-management-db.hr_management.employees`
+(employee_id, first_name, last_name, department_id, job_id, hire_date, gender, birth_date)
+VALUES
+  (1, 'Arthur', 'Alexandre', 1, 1, '2025-01-05', 'Male', '2000-02-07'),
+  (2, 'Jane', 'Smith', 2, 2, '2024-11-10', 'Female', '1994-09-11'),
+  (3, 'Steve', 'Jobs', 3, 3, '2003-03-24', 'Male', '1980-02-07'),
+  (4, 'Anna', 'Watson', 4, 4, '1990-05-13', 'Female', '1970-12-23'),
+  (5, 'John', 'Snow', 5, 5, '2011-09-30', 'Male', '1991-03-19'),
+  (6, 'Natasha', 'Romanov', 1, 6, '2018-03-12', 'Female', '1992-07-08'),
+  (7, 'Carlos', 'Gomez', 2, 2, '2019-01-15', 'Male', '1985-06-20'),
+  (8, 'Amanda', 'Clark', 3, 3, '2015-07-18', 'Female', '1989-04-02'),
+  (9, 'Olivia', 'Taylor', 4, 4, '2021-11-05', 'Female', '1988-08-19'),
+  (10, 'Emma', 'Stone', 5, 5, '2017-04-12', 'Female', '1987-11-29'),
+  (11, 'Tony', 'Stark', 1, 6, '2023-06-14', 'Male', '1990-10-15'),
+  (12, 'Emily', 'Davis', 2, 2, '2020-05-20', 'Female', '1995-03-25'),
+  (13, 'David', 'Lee', 3, 3, '1989-08-10', 'Male', '1973-12-22'),
+  (14, 'Liam', 'Anderson', 4, 4, '2023-02-14', 'Male', '1994-05-16'),
+  (15, 'Lucas', 'Johnson', 5, 5, '2019-09-22', 'Male', '1990-06-13');
+
+INSERT INTO `hr-management-db.hr_management.salaries`
+(salary_id, employee_id, salary, start_date, end_date)
+VALUES
+  (1, 1, 90000.00, '2025-01-05', NULL),
+  (2, 2, 65000.00, '2024-11-10', NULL),
+  (3, 3, 50000.00, '2003-03-24', NULL),
+  (4, 4, 150000.00, '1990-05-13', '2024-10-10'),
+  (5, 5, 82000.00, '2011-09-30', NULL),
+  (6, 6, 95000.00, '2018-03-12', NULL),
+  (7, 7, 70000.00, '2019-01-15', NULL),
+  (8, 8, 60000.00, '2015-07-18', NULL),
+  (9, 9, 140000.00, '2021-11-05', NULL),
+  (10, 10, 105000.00, '2017-04-12', NULL),
+  (11, 11, 120000.00, '2023-06-14', NULL),
+  (12, 12, 68000.00, '2020-05-20', NULL),
+  (13, 13, 55000.00, '2022-08-10', '2023-02-03'),
+  (14, 14, 76000.00, '2023-02-14', NULL),
+  (15, 15, 99000.00, '2019-09-22', NULL);
+
+INSERT INTO `hr-management-db.hr_management.performance_reviews` 
+(review_id, employee_id, review_date, score, comments)
+VALUES
+  (1, 1, '2025-02-15', 88, 'Great performance, exceeded expectations.'),
+  (2, 2, '2022-06-05', 92, 'Strong leadership and sales results.'),
+  (3, 3, '2022-11-20', 80, 'Solid work, but could improve in communication.'),
+  (4, 4, '2024-02-04', 99, 'Very experienced and loves to teach'),
+  (5, 5, '2023-05-25', 90, 'Excellent analytical skills, fast learner.'),
+  (6, 6, '2023-08-15', 87, 'Consistently delivers high-quality results.'),
+  (7, 7, '2022-03-10', 75, 'Needs improvement in client relationships.'),
+  (8, 8, '2021-12-19', 82, 'Great creativity in marketing strategies.'),
+  (9, 9, '2024-07-02', 95, 'Outstanding leadership in HR initiatives.'),
+  (10, 10, '2023-09-10', 85, 'Strong analytical skills and team collaboration.'),
+  (11, 11, '2024-05-01', 93, 'Excellent technical expertise.'),
+  (12, 12, '2023-11-11', 78, 'Consistent performance but needs more innovation.'),
+  (13, 13, '2023-01-15', 83, 'Good performance with room for growth.'),
+  (14, 14, '2024-06-20', 88, 'Strong skills in conflict resolution.'),
+  (15, 15, '2022-08-30', 89, 'Detail-oriented and reliable in financial analysis.');
+
+--Como fazer essa inserção ser automática e não precisar colocar os ids manualmente?
+INSERT INTO `hr-management-db.hr_management.benefits` 
+(benefit_id, benefit_type, employee_id, start_date, end_date)
+SELECT 1, 'Meal Allowance', e.employee_id, e.hire_date, s.end_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id;
+
+INSERT INTO `hr-management-db.hr_management.benefits` 
+(benefit_id, benefit_type, employee_id, start_date, end_date)
+SELECT 2, 'Health Insurance', e.employee_id, e.hire_date, s.end_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id;
+
+INSERT INTO `hr-management-db.hr_management.benefits` 
+(benefit_id, benefit_type, employee_id, start_date, end_date)
+SELECT 3, 'Transportation Voucher', e.employee_id, e.hire_date, s.end_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id
+JOIN `hr-management-db.hr_management.departments` d 
+ON e.department_id = d.department_id
+WHERE d.name != 'IT';
+
+INSERT INTO `hr-management-db.hr_management.benefits` 
+(benefit_id, benefit_type, employee_id, start_date, end_date)
+SELECT 4,'Performance Bonus', e.employee_id, e.hire_date, s.end_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id
+JOIN `hr-management-db.hr_management.departments` d 
+ON e.department_id = d.department_id
+WHERE d.name != 'HR';

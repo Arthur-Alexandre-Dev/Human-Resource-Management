@@ -1,0 +1,14 @@
+--Pontuação de Funcionários por Categoria
+SELECT 
+  pr.score, 
+  e.first_name, 
+  e.last_name,
+  CASE
+    WHEN pr.score >= 90 THEN 'Excellent'
+    WHEN pr.score >=80 THEN 'Good'
+    WHEN pr.score >=70 THEN 'Regular'
+    ELSE 'Bad'
+  END AS performance_category
+FROM `hr-management-db.hr_management.performance_reviews` pr
+JOIN `hr-management-db.hr_management.employees` e
+ON pr.employee_id = e.employee_id;

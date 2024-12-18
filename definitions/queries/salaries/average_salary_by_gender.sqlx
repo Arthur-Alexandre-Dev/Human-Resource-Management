@@ -1,0 +1,8 @@
+--Média de Salários por Gênero
+SELECT
+  AVG (s.salary) AS average_salary,
+  e.gender
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id
+GROUP BY e.gender;

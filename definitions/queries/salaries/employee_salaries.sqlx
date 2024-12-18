@@ -1,0 +1,17 @@
+--Salários de cada funcionário com Departamento, Cargo e Datas do Salário
+SELECT
+  e.employee_id,
+  e.first_name,
+  e.last_name,
+  s.salary,
+  d.name AS department,
+  jt.title AS role,
+  s.start_date AS salary_start_date,
+  s.end_date AS salary_end_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.salaries` s
+ON e.employee_id = s.employee_id
+JOIN `hr-management-db.hr_management.departments` d
+ON e.department_id = d.department_id
+JOIN `hr-management-db.hr_management.job_titles` jt
+ON e.job_id = jt.job_id;

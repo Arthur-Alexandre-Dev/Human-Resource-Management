@@ -1,0 +1,11 @@
+--Funcionários que Receberam Avaliações no Ano Atual
+SELECT
+  e.first_name,
+  e.last_name,
+  pr.score,
+  pr.review_date
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.performance_reviews` pr 
+ON e.employee_id = pr.employee_id
+WHERE pr.review_date >= DATE_SUB (CURRENT_DATE(), INTERVAL 1 YEAR)
+ORDER BY pr.score DESC;

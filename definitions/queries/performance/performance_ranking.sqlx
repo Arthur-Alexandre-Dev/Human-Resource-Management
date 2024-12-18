@@ -1,0 +1,10 @@
+--Ranking de Funcionários por Avaliação
+SELECT
+  e.first_name,
+  e.last_name,
+  pr.score,
+DENSE_RANK () OVER (ORDER BY pr.score DESC) AS score_rank
+FROM `hr-management-db.hr_management.employees` e
+JOIN `hr-management-db.hr_management.performance_reviews` pr
+ON e.employee_id = pr.employee_id
+ORDER BY pr.score DESC;
