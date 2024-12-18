@@ -39,3 +39,8 @@ hr-management-db/
 ├── .gitignore                   # Arquivos que devem ser ignorados pelo Git
 ├── README.md                    # Documentação do projeto
 └── workflow_settings.yaml       # Configurações do Workflow
+```
+#Exemplo de Query
+![Query_Example](https://github.com/user-attachments/assets/1ec37ac6-c87c-4853-9851-69a2f9aac50a)
+##Output
+![Output](https://github.com/user-attachments/assets/da56cd52-e086-4f7b-a13c-7ae54107c405)
